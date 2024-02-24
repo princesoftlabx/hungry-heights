@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Shopping Cart</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"
+      />
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      />
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+      />
+      <!-- Font Awesome -->
+      <link
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+         rel="stylesheet"
+      />
+      <!-- Google Fonts -->
+      <link
+         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+         rel="stylesheet"
+      />
+      <!-- MDB -->
+      <link
+         href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+         rel="stylesheet"
+      />
+   </head>
+
+   <body>
+      <section class="h-100 h-custom">
+         <div class="container h-100 py-5">
+            <div
+               class="row d-flex justify-content-center align-items-center h-100"
+            >
+               <div class="col">
+                  <div class="table-responsive">
+                     <table class="table">
+                        <thead>
+                           <tr>
+                              <th scope="col" class="h5">Shopping Bag</th>
+                              <th scope="col">Title</th>
+                              <th scope="col">Type</th>
+                              <th scope="col">Quantity</th>
+                              <th scope="col">Price</th>
+                           </tr>
+                        </thead>
+                        <tbody id="cartItems"></tbody>
+                     </table>
+                  </div>
+
+                  <div
+                     class="card shadow-2-strong mb-5 mb-lg-0"
+                     style="border-radius: 16px"
+                  >
+                     <div class="card-body p-4">
+                        <div class="row">
+                           <div class="col-md-6 col-lg-4 col-xl-3 mb-4 mb-md-0">
+                              <form>
+                                 <div class="d-flex flex-row pb-3">
+                                    <div class="d-flex align-items-center pe-2">
+                                       <input
+                                          class="form-check-input"
+                                          type="radio"
+                                          name="radioNoLabel"
+                                          id="radioNoLabel1v"
+                                          value=""
+                                          aria-label="..."
+                                          checked
+                                       />
+                                    </div>
+                                    <div class="rounded border w-100 p-3">
+                                       <p
+                                          class="d-flex align-items-center mb-0"
+                                       >
+                                          <i
+                                             class="fab fa-cc-mastercard fa-2x text-dark pe-2"
+                                          ></i
+                                          >Credit Card
+                                       </p>
+                                    </div>
+                                 </div>
+                                 <div class="d-flex flex-row pb-3">
+                                    <div class="d-flex align-items-center pe-2">
+                                       <input
+                                          class="form-check-input"
+                                          type="radio"
+                                          name="radioNoLabel"
+                                          id="radioNoLabel2v"
+                                          value=""
+                                          aria-label="..."
+                                       />
+                                    </div>
+                                    <div class="rounded border w-100 p-3">
+                                       <p
+                                          class="d-flex align-items-center mb-0"
+                                       >
+                                          <i
+                                             class="fab fa-cc-visa fa-2x fa-lg text-dark pe-2"
+                                          ></i
+                                          >Debit Card
+                                       </p>
+                                    </div>
+                                 </div>
+                                 <div class="d-flex flex-row">
+                                    <div class="d-flex align-items-center pe-2">
+                                       <input
+                                          class="form-check-input"
+                                          type="radio"
+                                          name="radioNoLabel"
+                                          id="radioNoLabel3v"
+                                          value=""
+                                          aria-label="..."
+                                       />
+                                    </div>
+                                    <div class="rounded border w-100 p-3">
+                                       <p
+                                          class="d-flex align-items-center mb-0"
+                                       >
+                                          <i
+                                             class="fab fa-cc-paypal fa-2x fa-lg text-dark pe-2"
+                                          ></i
+                                          >PayPal
+                                       </p>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                           <div class="col-md-6 col-lg-4 col-xl-6">
+                              <div class="row">
+                                 <div class="col-12 col-xl-6">
+                                    <div class="form-outline mb-4 mb-xl-5">
+                                       <input
+                                          type="text"
+                                          id="typeName"
+                                          class="form-control form-control-lg"
+                                          size="17"
+                                          placeholder="John Smith"
+                                       />
+                                       <label class="form-label" for="typeName"
+                                          >Name on card</label
+                                       >
+                                    </div>
+                                    <div class="form-outline mb-4 mb-xl-5">
+                                       <input
+                                          type="text"
+                                          id="typeExp"
+                                          class="form-control form-control-lg"
+                                          placeholder="MM/YY"
+                                          size="7"
+                                          id="exp"
+                                          minlength="7"
+                                          maxlength="7"
+                                       />
+                                       <label class="form-label" for="typeExp"
+                                          >Expiration</label
+                                       >
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-xl-6">
+                                    <div class="form-outline mb-4 mb-xl-5">
+                                       <input
+                                          type="text"
+                                          id="typeText"
+                                          class="form-control form-control-lg"
+                                          size="17"
+                                          placeholder="1111 2222 3333 4444"
+                                          minlength="19"
+                                          maxlength="19"
+                                       />
+                                       <label class="form-label" for="typeText"
+                                          >Card Number</label
+                                       >
+                                    </div>
+                                    <div class="form-outline mb-4 mb-xl-5">
+                                       <input
+                                          type="password"
+                                          id="typeText"
+                                          class="form-control form-control-lg"
+                                          placeholder="&#9679;&#9679;&#9679;"
+                                          size="1"
+                                          minlength="3"
+                                          maxlength="3"
+                                       />
+                                       <label class="form-label" for="typeText"
+                                          >Cvv</label
+                                       >
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-4 col-xl-3">
+                              <div
+                                 class="d-flex justify-content-between"
+                                 style="font-weight: 500"
+                              >
+                                 <p class="mb-2">Subtotal</p>
+                                 <p class="mb-2" id="subtotal">$0.00</p>
+                              </div>
+                              <div
+                                 class="d-flex justify-content-between mb-4"
+                                 style="font-weight: 500"
+                              >
+                                 <p class="mb-2">Total (tax included)</p>
+                                 <p class="mb-2" id="total">$0.00</p>
+                              </div>
+                              <button
+                                 type="button"
+                                 class="btn btn-primary btn-block btn-lg"
+                                 onclick="checkout()"
+                              >
+                                 Checkout
+                              </button>
+                              <button
+                                 type="button"
+                                 class="btn btn-secondary btn-block btn-lg mt-2"
+                                 onclick="createNewOrder()"
+                              >
+                                 New Order
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+      <script
+         type="text/javascript"
+         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+      ></script>
+
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const typeNameInput = document.getElementById('typeName');
+            const typeExpInput = document.getElementById('typeExp');
+            const typeTextInput = document.getElementById('typeText');
+            const subtotalElement = document.getElementById('subtotal');
+            const totalElement = document.getElementById('total');
+
+            function updateCart(cartData) {
+               cartItemsContainer.innerHTML = '';
+
+               let subtotal = 0;
+
+               cartData.forEach((item) => {
+                  const itemHtml = `
+                    <tr>
+                        <th scope="row">
+                            <div class="d-flex align-items-center">
+                                <img src="${
+                                   item.image
+                                }" class="img-fluid rounded-3"
+                                    style="width: 120px;" alt="Book">
+                                <div class="flex-column ms-4">
+                                    
+                                    </div>
+                                    
+                                    </div>
+                                    </th>
+                                    <td class="align-middle">
+                                        
+                                        <p class="mb-2">${item.title}</p>
+                        </td>
+                                    <td class="align-middle">
+                                        
+                                        <p class="mb-0">${item.type}</p>
+                        </td>
+                        <td class="align-middle">
+                            <div class="d-flex flex-row">
+                                <button class="btn btn-link px-2"
+                                    onclick="updateQuantity(${item.id}, -1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+
+                                <input id="quantity-${
+                                   item.id
+                                }" min="0" name="quantity"
+                                    value="${item.quantity}" type="number"
+                                    class="form-control form-control-sm" style="width: 50px;"
+                                    onchange="updateQuantity(${
+                                       item.id
+                                    }, this.value)" />
+
+                                <button class="btn btn-link px-2"
+                                    onclick="updateQuantity(${item.id}, 1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <p class="mb-0" style="font-weight: 500;">$${(
+                               item.price * item.quantity
+                            ).toFixed(2)}</p>
+                        </td>
+                    </tr>
+                `;
+
+                  cartItemsContainer.innerHTML += itemHtml;
+
+                  subtotal += item.price * item.quantity;
+               });
+
+               subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+               totalElement.textContent = `$${(subtotal + 2.99).toFixed(2)}`;
+            }
+
+            function updateQuantity(itemId, newQuantity) {
+               const cartData =
+                  JSON.parse(localStorage.getItem('cartItems')) || [];
+               const itemIndex = cartData.findIndex(
+                  (item) => item.id === itemId
+               );
+
+               if (itemIndex !== -1) {
+                  cartData[itemIndex].quantity = Math.max(0, newQuantity);
+                  localStorage.setItem('cartItems', JSON.stringify(cartData));
+                  updateCart(cartData);
+               }
+            }
+
+            function checkout() {
+               alert('Checkout button clicked!');
+            }
+
+            function createNewOrder() {
+               alert('New Order button clicked!');
+            }
+
+            const cartData =
+               JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            updateCart(cartData);
+         });
+      </script>
+   </body>
+</html>
